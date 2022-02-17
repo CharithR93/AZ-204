@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "primaryStorageName": {
+            "type": "string",
+            "metadata": {
+                "description": "Resource name"               
+            }
+        },
+        "skus": {
+            "type": "string",
+            "allowedValues": [
+                "Standard_LRS",
+                "Premium_LRS"
+            ]
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "description"
+            },
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "functions": [],
+    "variables": {
+        "resourceName": "[concat('az',parameters('primaryStorageName'))]"
+    },
+    "resources": [
+        {
+            "name": "[variables('resourceName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-04-01",
+            "tags": {
+                "displayName": "storageaccount1"
+            },
+            "location": "[parameters('location')]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "[parameters('skus')]"
+            }
+        }
+          
+    ],
+    "outputs": {
+        "resourceName": {
+            "type": "string",
+            "value": "[variables('resourceName')]"
+        },
+        "location": {
+            "type": "string",
+            "value": "[parameters('location')]"
+        },
+        "sku": {
+            "type": "string",
+            "value": "[parameters('skus')]"
+        }
+    }
+}   
