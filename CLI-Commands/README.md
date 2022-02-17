@@ -1,10 +1,10 @@
 ## *Basic Azuer CLI Commands for AZ-204 Exam*
 
-#### Login to azuer account 
+#### Login to azure account 
 ```
 az login 
 ```
-#### Get help for to complete commands 
+#### Get help
 ```
  az account -h
 ```
@@ -19,7 +19,7 @@ az group list --output table
 az group create --name AZT200 --location centralindia
 ```
 
-#### Create VM
+#### Create a windows VM
 ```
 az vm create --resource-group AZT200 --name AZTvm --image win2019datacenter --admin-username AZT
 ```
